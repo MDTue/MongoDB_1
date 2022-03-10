@@ -60,4 +60,11 @@ public class JokesService {
                 .map(jokesRepository::save);
     }*/
 
+    public Optional<Jokes> deleteJokes(String id) {
+        return jokesRepository.findById(id)
+                .map(j-> {
+                    jokesRepository.deleteById(id);
+                    return j;
+                });
+    }
 }

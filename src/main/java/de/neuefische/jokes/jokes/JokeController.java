@@ -44,4 +44,9 @@ public class JokeController {
         return ResponseEntity.of(jokesService.patchJokes(id, jokes));
     }
 
+    @DeleteMapping("/{id")
+    public ResponseEntity<Jokes> deleteJokes(@PathVariable String id) {
+        return ResponseEntity.of(jokesService.deleteJokes(id));
+    }
+
 }
