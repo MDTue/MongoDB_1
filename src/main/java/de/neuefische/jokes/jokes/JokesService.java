@@ -21,9 +21,43 @@ public class JokesService {
         return jokesRepository.findById(id);
     }
 
+    public List<Jokes> findById(String id) {
+        return jokesRepository.findAll();
+    }
+    public List<Jokes> findAllJokes() {
+        return jokesRepository.findAll();
+    }
+
+
+
     public List<Jokes> findByKlass(String klass){
         return jokesRepository.findByKlass(klass);
     }
 
+    public Jokes updateJokes(Jokes jokes){
+        return jokesRepository.save(jokes);
+    }
+
+    public Optional<Jokes> patchJokes(String id, Jokes jokes) {
+
+        Optional<Jokes> optionalJokes = jokesRepository.findById(id);
+        if (optionalJokes.isPresent()) {
+            Jokes jokesFromDatabase = optionalJokes.get();
+            if (jokes.getJoke() != null) {
+                jokesFromDatabase.setJoke(jokes.getJoke());
+            }
+            if (jokes.getKlass() != null) {
+                jokesFromDatabase.setKlass(jokes.getKlass());
+            }
+            return Optional.of(jokesRepository.save(jokesFromDatabase));
+        } else {
+            return Optional.empty();
+        }
+
+    }
+    /*    return jokesRepository.findById(id)
+                .map(j -> j.patch(jokes))
+                .map(jokesRepository::save);
+    }*/
 
 }

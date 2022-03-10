@@ -6,10 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
-
 public class Jokes {
     @Id
-    private String ID;
+    private String id;
     private String joke;
     private String klass;
     private String rightAnswer;

@@ -7,11 +7,5 @@ import java.util.List;
 
 @Document
 public interface JokesRepository extends MongoRepository <Jokes, String > {
-
     List<Jokes> findByKlass(String klass);
-    List<Jokes> findByID(String id);
-
-
-
-
-}
+    }
